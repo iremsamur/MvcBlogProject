@@ -1,0 +1,70 @@
+﻿<!--<h2>Sen bir partial alanısın</h2><!--Burası partial view alanı. -->
+<!--İndirdiğimiz template'in index dosyasındaki site-section kısımını alıp buraya yapıştıralım.
+    Burası partial view alt içerik kısımıdır-->
+@model IEnumerable<EntityLayer.Concrete.Blog>
+    @{ String color="";//if'lerin içine girebilmesi için Başlangıç değeri ataması yapmamız gerekir.
+
+    }
+    
+<div class="site-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2>Post Listesi</h2>
+            </div>
+        </div>
+        <div class="row">
+            <!--Kategorilerin çeşidine göre her kategorinin farklı renk alması için bunu yazıyorum.-->
+            @foreach (var x in Model)
+            {
+
+                if (x.Category.CategoryName == "Seyahat")
+                {
+                    color = "post-category text-white bg-warning mb-3";
+                }
+                else if(x.Category.CategoryName == "Teknoloji")
+                {
+                    color = "post-category text-white bg-info mb-3";
+                }
+                else if (x.Category.CategoryName == "Yazılım")
+                {
+                    color = "post-category text-white bg-info mb-3";
+                }
+                else if (x.Category.CategoryName == "Spor")
+                {
+                    color = "post-category text-white bg-danger mb-3";
+                }
+                else if (x.Category.CategoryName == "Film & Dizi")
+                {
+                    color = "post-category text-white bg-success mb-3";
+                }
+                else if (x.Category.CategoryName == "Sanat")
+                {
+                    color = "post-category text-white bg-primary mb-3";
+                }
+                <!--Bu şekilde BlogList alanına gelip görünecek html alanlarına veritabanından foreach içinde veri çekerek gelmesini sağladık-->
+                <div class="col-lg-4 mb-4">
+                    <div class="entry2">
+                        <a href="single.html"><img src="@x.BlogImage" style="height:250px" alt="Image" class="img-fluid rounded"></a>
+                        <div class="excerpt">
+                            <span class="@color">@x.Category.CategoryName</span><!--şartlara göre color'a if lerle farklı renkler atadım . Bunu color değişkenine 
+                                                                                    atadığım içim color değişkenini  span class'ına css olarak veriyorum.-->
+
+                            <h2><a href="single.html">@x.BlogTitle</a></h2>
+                            <div class="post-meta align-items-center text-left clearfix">
+                                <figure class="author-figure mb-0 mr-3 float-left"><img src="@x.Author.AuthorImage" alt="Image" class="img-fluid"></figure>
+                                <span class="d-inline-block mt-1"> <a href="#">@x.Author.AuthorName</a></span>
+                                <span>&nbsp;-&nbsp;@(((DateTime)x.BlogDate).ToString("dd-MMM-yyyy"))</span><!--Tarih formatlandırması yaptım. Uygun formatta olması için-->
+                            </div>
+
+                            <p>@x.BlogContent.Substring(0, x.BlogContent.Substring(0, 50).LastIndexOf(" "))...<!--.Substring(0,x.BlogContent.Substring(0,50).LastIndexOf(" "))..--></p><!--yorum satırı içindeki Metinin sadece 0'dan 200.karaktere olan kısımını al Bu kullanımla kelimelerin bölünmemesi için string metodları kullanarak 0'dan 200'e kadar al ama boşluğa kadar al dedik-->
+
+                            <p><a href="#">Devamını Oku</a></p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

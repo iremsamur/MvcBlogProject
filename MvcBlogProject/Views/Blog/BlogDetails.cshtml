@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "BlogDetails";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<!--<h2>BlogDetails</h2>-->
+<!--Blog detaylarının yer aldığı partial view'ler bu action result içinde yer alır. Yani
+    action result tüm sayfa ise partial view bu tüm sayfa içinde alt parça bölümleri ifade eder.'-->
+@Html.Action("BlogCover", "Blog")<!--//Blog içindeki BlogCover partial view'ini bu action result içine ekliyorum.'-->
+<!--BlogReadAll 'un düzenli görünmesi için single.html'de bulunan bu kısımı da ekledim.Yoksa istediğim görüntüde değildi.'-->
+
+<section class="site-section py-lg">
+    <div class="container">
+
+        <div class="row blog-entries element-animate">
+
+            <div class="col-md-12 col-lg-8 main-content">
+                @Html.Action("BlogReadAll", "Blog")
+
+                @Html.Action("CommentList", "Comment")<!--Buraya CommentList gelecek . Comment controller'ının içinde.'-->
+
+            </div>
+            <!--Yazar hakkında kısımı burada olur.-->
+            <div class="col-md-12 col-lg-4 sidebar">
+                @Html.Action("AuthorAbout", "Author")<!--Author controller'ı içinde bulunuyor'-->
+                <!--Bunu div içinde yazarak Yazar'ı sağ tarafa taşımamı sağlıyor.'-->
+                <!--Yazarın  popüler postlarını ekleyelim-->
+                @Html.Action("AuthorPopularPost", "Author")
+                <!--Blog Details içindeki Category bölümü-->
+                @Html.Action("BlogDetailsCategoryList", "Category")
+            </div>
+        </div>
+    </div>
+</section>
+<!--Buradaki section kısımı bitti artık kalan partial'ları buraya yazarım'-->
+<!--Blog ana sayfasının Index'i içinde yer alan aynı bölümler burada da olduğu için direk buraya ekledim'
+    index tarafında aynı olan  kısımlarıda direk kopyalayıp ekledim-->
+@Html.Action("OtherFeaturedPosts", "Blog")<!--Diğer postlar için-->
+<!--Mail subscribe'ı ekleyelim'-->
+@Html.Action("MailSubscribe", "Blog")
+<!--Footer partial view kısımını yazalım-->
+@Html.Action("Footer", "About")
+<!--About controllerden gelir.
+    Yani footer partial'ım AboutController içinde yani farklı bir controllerdaki partial'ı burada kullanabilirim. Blog klasörü içinde sorun yok-->

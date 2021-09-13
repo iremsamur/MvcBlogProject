@@ -1,0 +1,122 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!--<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Layout</title>
+</head>
+<body>
+    <div>-->
+<!--Bizim sayfa değişse bile menüleri gösterecek olan , sürekli yukarıda sabit kalıp değişmeyecek olan bir layout'a ihtiyacımız var.
+Projelerde sayfa değişse bile sabit kalan değişmeyen kısım layout bölümüdür.
+    Sabit hale getirmek için yani layout oluşturmak önce Shared klasörüne yeni bir view ekleyelim.
+        Ben bunu yeni bir layout olarak oluşturuyorum.
+        Şimdi blogcontroller'a Index üzerinde sağ tıklayıp bu  oluşturduğum layout'u' ekliyorum.
+        Bu şekilde layout ve view ilişkisini kurdum. Bu layout içinede RenderBody yazarak
+        Sayfamın view yani değişen içerik kısımını koyarım.-->
+<!--Burası Layout
+<br />
+//RenderBody()-->
+<!-- Render body bu layout'a bağlı çalışacak olan yani değişecek sayfaların nereye geleceğini gösterir
+yani içerik olan değişen kısımı temsil eder. Yani bu sayfaya bağlı içerikleri temsil eder.-->
+<!--</div>
+</body>
+</html>-->
+<!--Yukarıda ilk deneme amaçlı oluşturduğum kısımı düzenliyorum. Buraya indirdiğim hazır template'de bulunan
+    index.html sayfasındaki kodları kopyalayıp yapıştırıyorum.Asıl arayüzüm bu olacak ve ben bunu düzenleyeceğim'-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mini Blog</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Playfair+Display:400,700,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/miniblog/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/miniblog/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/miniblog/css/magnific-popup.css"><!--Her bir linke benim css, jquery dosyalarımın bulunduğu konuma göre düzenlemek için her birinin başına ~/miniblog/ ekledim-->
+    <link rel="stylesheet" href="~/miniblog/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/miniblog/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/miniblog/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/miniblog/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/miniblog/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="~/miniblog/css/aos.css">
+
+    <link rel="stylesheet" href="~/miniblog/css/style.css">
+</head>
+<body>
+
+    <div class="site-wrap">
+
+        <div class="site-mobile-menu">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+
+        <header class="site-navbar" role="banner">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+
+                    <div class="col-12 search-form-wrap js-search-form">
+                        <form method="get" action="#">
+                            <input type="text" id="s" class="form-control" placeholder="Search...">
+                            <button class="search-btn" type="submit"><span class="icon-search"></span></button>
+                        </form>
+                    </div>
+
+                    <div class="col-4 site-logo">
+                        <a href="index.html" class="text-black h2 mb-0">Mini Blog</a>
+                    </div>
+
+                    <div class="col-8 text-right">
+                        <nav class="site-navigation" role="navigation">
+                            <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
+                                <li><a href="category.html">Ana Sayfa</a></li><!--Gerekli alanları sildikten sonra şimdi üst menümüzü türkçeleştirip kendi blogumuza göre düzenleyelim.-->
+                                <li><a href="category.html">Teknoloji</a></li>
+                                <li><a href="category.html">Yazılım</a></li>
+                                <li><a href="category.html">Kültür & Sanat</a></li>
+                                <li><a href="category.html">Seyahat</a></li>
+                                <li><a href="category.html">Film & Dizi</a></li>
+                                <li><a href="category.html">Sağlık</a></li>
+                                <li><a href="category.html">Hakkımızda</a></li>
+                                <li><a href="category.html">İletişim</a></li>
+                                <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
+                            </ul>
+                        </nav>
+                        <a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-lg-none"><span class="icon-menu h3"></span></a>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+        @RenderBody()<!--RenderBody yani içeriği buraya ekliyoruzki çalıştırdığımızda hata vermesin-->
+
+    </div>
+    <!--Her bir linke benim css, jquery dosyalarımın bulunduğu konuma göre düzenlemek için her birinin başına ~/miniblog/ ekledim-->
+    <script src="~/miniblog/js/jquery-3.3.1.min.js"></script>
+    <script src="~/miniblog/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/miniblog/js/jquery-ui.js"></script>
+    <script src="~/miniblog/js/popper.min.js"></script>
+    <script src="~/miniblog/js/bootstrap.min.js"></script>
+    <script src="~/miniblog/js/owl.carousel.min.js"></script>
+    <script src="~/miniblog/js/jquery.stellar.min.js"></script>
+    <script src="~/miniblog/js/jquery.countdown.min.js"></script>
+    <script src="~/miniblog/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/miniblog/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/miniblog/js/aos.js"></script>
+
+    <script src="~/miniblog/js/main.js"></script>
+
+
+</body>
+</html>

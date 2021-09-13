@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<!--<h2>Burası Index</h2>-->
+<!--Trend postların partial view'ının postların üstünde görünmesi için burayada html.action ile featuredposts'u eklerim.-->
+@Html.Action("FeaturedPosts", "Blog")<!-- Yine blog controller (Blog) içinde FeaturedPosts isimli oluşturduğum partialView'i bulunması gereken yere ekleyelim. BlogList'in üstüne eklenir.-->
+
+@Html.Action("BlogList", "Blog")
+<!--Html Action ile layout dışındaki içeriği partial olarak ekledim.
+    Yani bunun anlamı BlogList isimli oluşturduğum partial'ı ekle. Ve Bu partial Blog Controller'ında bulunuyor-->
+@Html.Action("OtherFeaturedPosts", "Blog")<!--Diğer postlar için-->
+<!--Mail subscribe'ı ekleyelim'-->
+@Html.Action("MailSubscribe", "Blog")
+<!--Footer partial view kısımını yazalım-->
+@Html.Action("Footer", "About")<!--About controllerden gelir.
+                                   Yani footer partial'ım AboutController içinde yani farklı bir controllerdaki partial'ı burada kullanabilirim. Blog klasörü içinde sorun yok-->

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Category>
+<!--Burada Category sınıfımın işlemlerini arayüzde göstermek için Category sınıfımı yani modelimi bu şekilde dahil ederim.-->
+@{
+    ViewBag.Title = "Index";
+}
+<!--Burası benim kullanıcıya görünecek controller kodlarının çalışacağı view arayüz sayfam
+    Burayı CategoryController'ın listeleme işlemi için oluşturdum.
+    Projeler Index.cshtml sayfalarından çalıştırılırlar. Yani view'den Çünkü bu sayfalar view'lerdir.'-->
+<!--<h2>Burası Index</h2>-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h2>Burası Index</h2>
+        <br />
+        <table>
+            <tr>
+                <th>ID</th>
+                <td>Kategori Adı</td>
+            </tr>
+            <!--Burada görünüm için  html -css kodlarını yazdım . Ve veritabanı işlemleri sonucu gelen listeleme
+                değerlerini arayüzde göstermek için c# kodları kullandım.
+                html kodları için başında ed(maildeki ed) işareti yazılarak c# kodları yazarız.
+                -->
+            @foreach(var item in Model)//Oluşturduğumuz model üzerinde geziniyor. 
+                //Ve bu modelin Yani Category sınıfının veritabanı değerleri olan Id Ve name'i alıyor. ve veritabanındaki değerleri
+                //listelemeyi sağlıyor
+            {
+                <tr>
+                    <td>
+                        @item.CategoryID
+                    </td>
+                    <td>@item.CategoryName</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
+
